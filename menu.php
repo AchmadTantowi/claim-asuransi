@@ -9,7 +9,7 @@
           <li class="dropdown"><a href="index.php">Home </a></li>
            <li class="dropdown"><a href="#" >Our Company<i class="icon-caret-down"></i></a>
          		<ul class="dropdown-menu">
-           	  <li><a href="#">Visi, Misi & Moto</a></li>
+           	  <li><a href="visi-misi.php">Visi, Misi & Moto</a></li>
               <li><a href="#">Lokasi</a></li>
             </ul>
            </li>
