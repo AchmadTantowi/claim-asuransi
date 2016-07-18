@@ -13,7 +13,7 @@
               <li><a href="lokasi.php">Lokasi</a></li>
             </ul>
            </li>
-           <li class="dropdown"><a href="#" >List Insurance Company</a>
+           <li class="dropdown"><a href="list-insurance.php" >List Insurance Company</a>
            </li>
         </ul>
       </div><!--/.nav-collapse -->
