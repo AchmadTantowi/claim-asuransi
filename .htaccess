@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteRule ^adminweb$ admin.php [L]
+
+Options All -Indexes
