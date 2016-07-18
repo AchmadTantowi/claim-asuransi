@@ -76,7 +76,7 @@ if(isset($msg))
 							                                                      
 							            </select>
 									</div>
-									<button type="submit" class="btn btn-primary">Update</button>	
+									<button type="submit" class="btn btn-primary" name="btn-update">Update</button>	
 									<button onclick="goBack()" class="btn btn-default">Back</button>				
 								</form>
 							</div><!--/.row-->
