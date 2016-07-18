@@ -10,7 +10,7 @@
            <li class="dropdown"><a href="#" >Our Company<i class="icon-caret-down"></i></a>
          		<ul class="dropdown-menu">
            	  <li><a href="visi-misi.php">Visi, Misi & Moto</a></li>
-              <li><a href="#">Lokasi</a></li>
+              <li><a href="lokasi.php">Lokasi</a></li>
             </ul>
            </li>
            <li class="dropdown"><a href="#" >List Insurance Company</a>
