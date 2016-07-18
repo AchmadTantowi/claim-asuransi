@@ -1,4 +1,7 @@
-<?php include '../config/koneksi.php'; ?>
+<?php 
+// error_reporting(0);
+include '../config/koneksi.php'; 
+?>
 <!DOCTYPE html>
 <html>
 <head>

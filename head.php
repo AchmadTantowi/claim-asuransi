@@ -1,4 +1,7 @@
-<?php include 'config/koneksi.php'; ?>
+<?php 
+// error_reporting(0);
+include 'config/koneksi.php'; 
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->

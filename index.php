@@ -39,14 +39,36 @@ if(isset($_POST['btn-check']))
 }
 ?>
 <div class="clearfix"></div>
+<style>
 
+@media only screen and (max-width: 767px) {
+  .formresponsive{
+    margin-left:1%;
+  }
+}
+@media only screen and (max-width: 756px) {
+  .formresponsive{
+    margin-left:1%;
+  }
+}
+@media only screen and (max-width: 540px) {
+  .formresponsive{
+    margin-left:1%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .formresponsive{
+    margin-left:1%;
+  }
+}
+</style>
 <section id="newsletter">
   <div class="container">
     <div class="section-header-white">Cek Status Pengerjaan</div><!--section-header-->
       <div class="section-subheader">Silahkan masukan No.Polisi Anda untuk cek status pengerjaan</div>
-      <div class="newsletter-form">
-        <form id="newsletter-form" name="newsletter-form" method="post" style="margin-left:38%">        
-            <input name="no_pol" id="nl-name" type="text" placeholder="Masukan No.Polisi"/>
+      <div class="formresponsive">
+        <form id="newsletter-form" name="newsletter-form" method="post" class="">        
+            <input name="no_pol" id="nl-name" type="text" placeholder="Masukan No.Polisi" required/>
     
             <button type="submit" name="btn-check" id="nl-go"><i class="icon-chevron-right"></i></button>         
         </form> 
