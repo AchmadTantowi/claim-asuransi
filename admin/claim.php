@@ -22,6 +22,7 @@
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-body">
+					<div style="overflow:scroll;">
 						<table data-toggle="table" data-show-columns="true" data-search="true" data-pagination="true" data-sort-name="name" data-sort-order="desc">
 						    <thead>
 							    <tr>
@@ -46,6 +47,7 @@
 								 ?>
 						    </tbody>
 						</table>
+					</div>
 					</div>
 				</div>
 			</div>
