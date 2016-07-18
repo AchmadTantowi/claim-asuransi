@@ -21,7 +21,7 @@
 		
 		<div class="row">
 			<div class="col-md-6">
-				<form action="#" method="POST">			
+				<form target="_blank" action="cetak_lap_pengerjaan.php" method="POST">			
 					<div class="form-group">
 						<label>Dari Tanggal</label>
 						<input type="date" name="tgl_awal" class="form-control">
@@ -31,6 +31,17 @@
 						<label>Sampai Tanggal</label>
 						<input type="date" name="tgl_akhir" class="form-control">
 					</div>
+					<div class="form-group">
+						<label>Status Pengerjaan</label>
+						<select class="form-control" name='status_pengerjaan' required>
+							<option value="all">All</option>
+							<?php
+		                        $query = "SELECT * FROM status_pengerjaan ";
+		                        $crud->dropdown_status_pengerjaan($query);
+		                    ?>              
+			                                                      
+			            </select>
+	</div>
 					<button type="submit" class="btn btn primary">Cetak</button>				
 				</form>
 			</div><!--/.row-->
