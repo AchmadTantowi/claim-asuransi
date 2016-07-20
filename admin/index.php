@@ -20,54 +20,109 @@
 		</div><!--/.row-->
 		
 		<div class="row">
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-blue panel-widget ">
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="panel panel-teal panel-widget ">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked bag"><use xlink:href="#stroked-bag"></use></svg>
+							<svg class="glyph stroked dashboard dial"><use xlink:href="#stroked-dashboard-dial"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">120</div>
-							<div class="text-muted">New Orders</div>
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=6";
+									$crud->dashboard($query);
+								 ?>
+							</div>
+							<div class="text-muted">Status Prepare</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-orange panel-widget">
-					<div class="row no-padding">
-						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked empty-message"><use xlink:href="#stroked-empty-message"></use></svg>
-						</div>
-						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">52</div>
-							<div class="text-muted">Comments</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
+			<div class="col-xs-12 col-md-6 col-lg-4">
 				<div class="panel panel-teal panel-widget">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked male-user"><use xlink:href="#stroked-male-user"></use></svg>
+							<svg class="glyph stroked chain"><use xlink:href="#stroked-chain"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">24</div>
-							<div class="text-muted">New Users</div>
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=1";
+									$crud->dashboard($query);
+								 ?>
+							</div>
+							<div class="text-muted">Status Las Ketok</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-md-6 col-lg-3">
-				<div class="panel panel-red panel-widget">
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="panel panel-teal panel-widget">
 					<div class="row no-padding">
 						<div class="col-sm-3 col-lg-5 widget-left">
-							<svg class="glyph stroked app-window-with-content"><use xlink:href="#stroked-app-window-with-content"></use></svg>
+							<svg class="glyph stroked tag"><use xlink:href="#stroked-tag"></use></svg>
 						</div>
 						<div class="col-sm-9 col-lg-7 widget-right">
-							<div class="large">25.2k</div>
-							<div class="text-muted">Page Views</div>
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=2";
+									$crud->dashboard($query);
+								 ?>
+							</div>
+							<div class="text-muted">Status Dempul</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked brush"><use xlink:href="#stroked-brush"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=3";
+									$crud->dashboard($query);
+								 ?></div>
+							<div class="text-muted">Status Cat</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked pen tip"><use xlink:href="#stroked-pen-tip"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=5";
+									$crud->dashboard($query);
+								 ?>
+							</div>
+							<div class="text-muted">Status Poles</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="panel panel-teal panel-widget">
+					<div class="row no-padding">
+						<div class="col-sm-3 col-lg-5 widget-left">
+							<svg class="glyph stroked checkmark"><use xlink:href="#stroked-checkmark"></use></svg>
+						</div>
+						<div class="col-sm-9 col-lg-7 widget-right">
+							<div class="large">
+								<?php
+									$query = "SELECT COUNT(id_claim) FROM data_claim where id_status=4";
+									$crud->dashboard($query);
+								 ?>
+							</div>
+							<div class="text-muted">Status Finishing</div>
 						</div>
 					</div>
 				</div>

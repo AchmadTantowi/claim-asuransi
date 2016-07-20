@@ -9,6 +9,16 @@ class crud
 		$this->db = $con;
 	}
 
+	//dashboard
+	public function dashboard($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$count = $stmt->fetchColumn();
+
+		echo $count;
+	}
+
 	// crud asuransi
 	public function getAsuransi($idAsuransi)
 	{
