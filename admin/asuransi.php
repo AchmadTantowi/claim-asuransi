@@ -12,13 +12,23 @@
 				<li class="active">Icons</li>
 			</ol>
 		</div><!--/.row-->
-		
+
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header">Asuransi</h1>
 			</div>
 		</div><!--/.row-->
 		<div class="row">
+<?php
+	if(isset($_GET['deleted']))
+	{
+		?>
+        <div class="alert alert-success">
+    	<strong>Success!</strong> record telah dihapus... 
+		</div>
+        <?php
+	}
+?>	
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">

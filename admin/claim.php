@@ -18,6 +18,16 @@
 				<h1 class="page-header">Data Claim</h1>
 			</div>
 		</div><!--/.row-->
+<?php
+	if(isset($_GET['deleted']))
+	{
+		?>
+        <div class="alert alert-success">
+    	<strong>Success!</strong> record telah dihapus... 
+		</div>
+        <?php
+	}
+?>
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">

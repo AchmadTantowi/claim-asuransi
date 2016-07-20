@@ -12,6 +12,8 @@ include '../config/koneksi.php';
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/datepicker3.css" rel="stylesheet">
 <link href="../css/styles.css" rel="stylesheet">
+<script src="../assets/js/sweetalert-dev.js"></script>
+<link rel="stylesheet" href="../assets/js/sweetalert.css">
 
 <!--Icons-->
 <script src="../js/lumino.glyphs.js"></script>

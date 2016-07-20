@@ -8,6 +8,193 @@ class crud
 	{
 		$this->db = $con;
 	}
+
+	// crud asuransi
+	public function getAsuransi($idAsuransi)
+	{
+		$stmt = $this->db->prepare("SELECT * FROM asuransi WHERE id_asuransi=:id_asuransi");
+		$stmt->execute(array(":id_asuransi"=>$idAsuransi));
+		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		return $editRow;
+	}
+
+	public function update_asuransi($id_asuransi,$nama_asuransi)
+	{
+		try
+		{
+			$stmt=$this->db->prepare("UPDATE asuransi SET nama_asuransi=:nama_asuransi
+													WHERE id_asuransi=:id_asuransi ");
+			$stmt->bindparam(":id_asuransi",$id_asuransi);
+			$stmt->bindparam(":nama_asuransi",$nama_asuransi);
+			$stmt->execute();
+			
+			return true;	
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
+	public function dropdown_asuransi($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+				<option value=<?php echo $row['id_asuransi'];?>><?php echo $row['nama_asuransi']; ?></option>
+                <?php
+			}
+		}
+	}
+
+	public function data_asuransi($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$no=1;
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+                <tr>
+	                <td><?php echo $no++; ?></td>
+	                <td><?php echo($row['nama_asuransi']); ?></td>
+	                <td align="center">
+	                	<a href="asuransi_edit.php?edit_id=<?php echo($row['id_asuransi']); ?>">
+						<i class="glyphicon glyphicon-edit"></i></a>
+						<a href="asuransi_hapus.php?delete_id=<?php echo($row['id_asuransi']); ?>">
+						<i class="glyphicon glyphicon-remove-circle"></i></a>
+	                </td>
+                </tr>
+                <?php
+			}
+		}
+	}
+
+	public function simpan_asuransi($nama_asuransi)
+	{
+		try
+		{
+			$stmt = $this->db->prepare("INSERT INTO asuransi(nama_asuransi) VALUES(:nama_asuransi)");
+			$stmt->bindparam(":nama_asuransi",$nama_asuransi);
+			$stmt->execute();
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
+	public function hapus_asuransi($id_asuransi)
+	{
+		$stmt = $this->db->prepare("DELETE FROM asuransi WHERE id_asuransi=:id_asuransi");
+		$stmt->bindparam(":id_asuransi",$id_asuransi);
+		$stmt->execute();
+		return true;
+	}
+
+	// crud status pengerjaan
+	public function getStatus($idStatus)
+	{
+		$stmt = $this->db->prepare("SELECT * FROM status_pengerjaan WHERE id_status=:id_status");
+		$stmt->execute(array(":id_status"=>$idStatus));
+		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		return $editRow;
+	}
+
+	public function dropdown_status_pengerjaan($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+				<option value=<?php echo $row['id_status'];?>><?php echo $row['nama_status']; ?></option>
+                <?php
+			}
+		}
+	}
+
+	public function data_statuspengerjaan($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$no=1;
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+                <tr>
+	                <td><?php echo $no++; ?></td>
+	                <td><?php echo($row['nama_status']); ?></td>
+	                <td align="center">
+	                	<a href="status_pengerjaan_edit.php?edit_id=<?php echo($row['id_status']); ?>">
+						<i class="glyphicon glyphicon-edit"></i></a>
+						<a href="status_pengerjaan_hapus.php?delete_id=<?php echo($row['id_status']); ?>">
+						<i class="glyphicon glyphicon-remove-circle"></i></a>
+	                </td>
+                </tr>
+                <?php
+			}
+		}
+	}
+
+	public function simpan_status_pengerjaan($nama_status)
+	{
+		try
+		{
+			$stmt = $this->db->prepare("INSERT INTO status_pengerjaan(nama_status) VALUES(:nama_status)");
+			$stmt->bindparam(":nama_status",$nama_status);
+			$stmt->execute();
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
+	public function hapus_status_pengerjaan($id_status)
+	{
+		$stmt = $this->db->prepare("DELETE FROM status_pengerjaan WHERE id_status=:id_status");
+		$stmt->bindparam(":id_status",$id_status);
+		$stmt->execute();
+		return true;
+	}
+
+	public function update_status_pengerjaan($id_status,$nama_status)
+	{
+		try
+		{
+			$stmt=$this->db->prepare("UPDATE status_pengerjaan SET nama_status=:nama_status
+													WHERE id_status=:id_status ");
+			$stmt->bindparam(":id_status",$id_status);
+			$stmt->bindparam(":nama_status",$nama_status);
+			$stmt->execute();
+			
+			return true;	
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
+	// crud claim
+
 	
 	public function simpan_claim($nama,$status,$asuransi,$telp,$email,$no_pol,$merk,$model,$warna,$tahun,$tgl_claim,$jam_claim)
 	{
@@ -45,23 +232,7 @@ class crud
 		return $editRow;
 	}
 
-	public function getNoPol($noPol)
-	{
-		$stmt = $this->db->prepare("SELECT * FROM data_claim WHERE no_polisi=:no_polisi");
-		$stmt->execute(array(":no_polisi"=>$noPol));
-		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
-		return $editRow;
-	}
-
-	public function getStatus($idStatus)
-	{
-		$stmt = $this->db->prepare("SELECT * FROM status_pengerjaan WHERE id_status=:id_status");
-		$stmt->execute(array(":id_status"=>$idStatus));
-		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
-		return $editRow;
-	}
-	
-	public function update_claim($id_claim,$id_status)
+		public function update_claim($id_claim,$id_status)
 	{
 		try
 		{
@@ -77,69 +248,6 @@ class crud
 		{
 			echo $e->getMessage();	
 			return false;
-		}
-	}
-	
-	public function hapus($id)
-	{
-		$stmt = $this->db->prepare("DELETE FROM table1 WHERE id=:id");
-		$stmt->bindparam(":id",$id);
-		$stmt->execute();
-		return true;
-	}
-
-	public function dropdown_asuransi($query)
-	{
-		$stmt = $this->db->prepare($query);
-		$stmt->execute();
-		if($stmt->rowCount()>0)
-		{
-			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-			{
-				?>
-				<option value=<?php echo $row['id_asuransi'];?>><?php echo $row['nama_asuransi']; ?></option>
-                <?php
-			}
-		}
-	}
-
-	public function dropdown_status_pengerjaan($query)
-	{
-		$stmt = $this->db->prepare($query);
-		$stmt->execute();
-		if($stmt->rowCount()>0)
-		{
-			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-			{
-				?>
-				<option value=<?php echo $row['id_status'];?>><?php echo $row['nama_status']; ?></option>
-                <?php
-			}
-		}
-	}
-	
-	public function data_asuransi($query)
-	{
-		$stmt = $this->db->prepare($query);
-		$stmt->execute();
-		$no=1;
-		if($stmt->rowCount()>0)
-		{
-			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-			{
-				?>
-                <tr>
-	                <td><?php echo $no++; ?></td>
-	                <td><?php echo($row['nama_asuransi']); ?></td>
-	                <td align="center">
-	                	<a href="admin/asuransi_edit.php?edit_id=<?php echo($row['id_asuransi']); ?>">
-						<i class="glyphicon glyphicon-edit"></i></a>
-						<a href="admin/asuransi_hapus.php?delete_id=<?php echo($row['id_asuransi']); ?>">
-						<i class="glyphicon glyphicon-remove-circle"></i></a>
-	                </td>
-                </tr>
-                <?php
-			}
 		}
 	}
 
@@ -177,31 +285,26 @@ class crud
 		}
 	}
 
-	public function data_statuspengerjaan($query)
+	public function claim_hapus($id_claim)
 	{
-		$stmt = $this->db->prepare($query);
+		$stmt = $this->db->prepare("DELETE FROM data_claim WHERE id_claim=:id_claim");
+		$stmt->bindparam(":id_claim",$id_claim);
 		$stmt->execute();
-		$no=1;
-		if($stmt->rowCount()>0)
-		{
-			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-			{
-				?>
-                <tr>
-	                <td><?php echo $no++; ?></td>
-	                <td><?php echo($row['nama_status']); ?></td>
-	                <td align="center">
-	                	<a href="admin/status_edit.php?edit_id=<?php echo($row['id_status']); ?>">
-						<i class="glyphicon glyphicon-edit"></i></a>
-						<a href="admin/status_hapus.php?delete_id=<?php echo($row['id_status']); ?>">
-						<i class="glyphicon glyphicon-remove-circle"></i></a>
-	                </td>
-                </tr>
-                <?php
-			}
-		}
+		return true;
 	}
+
 	
+	// cek status pengerjaan
+	public function getNoPol($noPol)
+	{
+		$stmt = $this->db->prepare("SELECT * FROM data_claim WHERE no_polisi=:no_polisi");
+		$stmt->execute(array(":no_polisi"=>$noPol));
+		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		return $editRow;
+	}	
+	
+	
+
 	public function paging($query,$records_per_page)
 	{
 		$starting_position=0;
@@ -261,7 +364,7 @@ class crud
 	
 	/* paging */
 
-	// login
+	// auth
 	public function auth($query){
 		$stmt = $this->db->prepare($query);
 		$stmt->execute();
