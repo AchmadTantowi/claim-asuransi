@@ -12,13 +12,10 @@
    <div class="static-header">
       <div class="container">
         <div class="col-lg-6 col-md-6 col-sm-6">
-          <h1>Awesome WordPress Theme</h1>
-          <h2>elegant and easy to use.</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-          sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam.</p>
+          <h1>BENGKEL LAYANAN PRIMA</h1>
+          <p>Tujuan utama kami adalah terciptanya suatu “Long Term Relationship” terhadap pelanggan. Oleh sebab itu, berbagai pengembangan terhadap bengkel akan selalu kami upayakan agar tujuan tersebut dapat kami capai serta menjadi bengkel rekanan asuransi yang dapat dipercaya.</p>
           <a class="btn btn-default" href="form-claim.php">Claim Asuransi</a> </div>
-        <div class="col-lg-6 col-md-6 col-sm-6"> <img class="img4" src="assets/img/slider/slider4.png"> </div>
+        <div class="col-lg-6 col-md-6 col-sm-6"> <img src="assets/img/slider/slider4.jpg" width="500" height="500"> </div>
       </div>
       <!--container ends--> 
     </div>

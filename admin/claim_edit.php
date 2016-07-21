@@ -9,11 +9,12 @@ if(isset($_POST['btn-update']))
 {
 	$id_claim = $_GET['edit_id'];
 	$id_status = $_POST['id_status'];
+	$tgl_selesai = date('Y-m-d');
 	
-	if($crud->update_claim($id_claim, $id_status))
+	if($crud->update_claim($id_claim, $id_status, $tgl_selesai))
 	{
 		$msg = "<div class='alert alert-info'>
-				<strong>Selamat</strong> Record telah berhasil diubah :) <a href='index.php'>HOME</a>!
+				<strong>Selamat</strong> Record telah berhasil diubah :) <a href='claim.php'>Lihat Data Claim</a>!
 				</div>";
 	}
 	else

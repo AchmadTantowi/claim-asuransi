@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50620
 File Encoding         : 65001
 
-Date: 2016-06-19 13:42:56
+Date: 2016-07-22 06:29:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -49,14 +49,16 @@ CREATE TABLE `data_claim` (
   `tahun_mobil` varchar(5) NOT NULL,
   `tgl_claim` date NOT NULL,
   `jam_claim` time NOT NULL,
+  `tgl_selesai` date DEFAULT NULL,
   PRIMARY KEY (`id_claim`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of data_claim
 -- ----------------------------
-INSERT INTO `data_claim` VALUES ('2', 'OWI', '1', '2', '081212343445', 'owiahmad90@gmail.com', 'B 4545 POY', 'Honda CITY', 'Sedan', 'Hitam', '2005', '2016-06-12', '13:43:00');
-INSERT INTO `data_claim` VALUES ('3', 'Edo', '6', '2', '081212121212', 'edo@gmail.com', 'B 1234 OCE', 'Honda', 'Sedan', 'Putih', '2012', '2016-06-19', '13:41:49');
+INSERT INTO `data_claim` VALUES ('2', 'OWI', '2', '2', '081212343445', 'owiahmad90@gmail.com', 'B 4545 POY', 'Honda CITY', 'Sedan', 'Hitam', '2005', '2016-06-12', '13:43:00', '0000-00-00');
+INSERT INTO `data_claim` VALUES ('3', 'Edo', '6', '2', '081212121212', 'edo@gmail.com', 'B 1234 OCE', 'Honda', 'Sedan', 'Putih', '2012', '2016-06-19', '13:41:49', '0000-00-00');
+INSERT INTO `data_claim` VALUES ('4', 'kiki', '7', '1', '0812121212', 'kiki@gmail.com', 'B 1234 TRQ', 'honda', 'sedan', 'hitam', '2012', '2016-07-16', '20:30:51', '2016-07-21');
 
 -- ----------------------------
 -- Table structure for `status_pengerjaan`
@@ -66,7 +68,7 @@ CREATE TABLE `status_pengerjaan` (
   `id_status` int(11) NOT NULL AUTO_INCREMENT,
   `nama_status` varchar(30) NOT NULL,
   PRIMARY KEY (`id_status`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of status_pengerjaan
@@ -77,6 +79,7 @@ INSERT INTO `status_pengerjaan` VALUES ('3', 'Cat');
 INSERT INTO `status_pengerjaan` VALUES ('4', 'Finishing');
 INSERT INTO `status_pengerjaan` VALUES ('5', 'Poles');
 INSERT INTO `status_pengerjaan` VALUES ('6', 'Prepare');
+INSERT INTO `status_pengerjaan` VALUES ('7', 'Done');
 
 -- ----------------------------
 -- Table structure for `users`

@@ -2,7 +2,7 @@
   <div class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.php"><img src="assets/img/basic/logo.png" alt="" /></a>
+        <a class="navbar-brand" href="index.php"><img src="assets/img/basic/logo.png" alt="" width="124" height="50" /></a>
       </div>
       <div class="nav-links">
         <ul class="nav navbar-nav">

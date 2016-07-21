@@ -242,17 +242,30 @@ class crud
 		return $editRow;
 	}
 
-		public function update_claim($id_claim,$id_status)
+	public function update_claim($id_claim,$id_status,$tgl_selesai=null)
 	{
 		try
 		{
-			$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status
-													WHERE id_claim=:id_claim ");
-			$stmt->bindparam(":id_claim",$id_claim);
-			$stmt->bindparam(":id_status",$id_status);
-			$stmt->execute();
-			
-			return true;	
+			if($id_status == 7){
+				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status,
+																tgl_selesai=:tgl_selesai
+														WHERE id_claim=:id_claim ");
+				$stmt->bindparam(":id_claim",$id_claim);
+				$stmt->bindparam(":id_status",$id_status);
+				$stmt->bindparam(":tgl_selesai",$tgl_selesai);
+				$stmt->execute();
+				
+				return true;
+
+			} else {
+				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status
+														WHERE id_claim=:id_claim ");
+				$stmt->bindparam(":id_claim",$id_claim);
+				$stmt->bindparam(":id_status",$id_status);
+				$stmt->execute();
+				
+				return true;	
+			}
 		}
 		catch(PDOException $e)
 		{
@@ -283,6 +296,7 @@ class crud
 	                <td><?php echo($row['model_mobil']); ?></td>
 	                <td><?php echo($row['warna_mobil']); ?></td>
 	                <td><?php echo($row['tahun_mobil']); ?></td>
+	                <td><?php echo($row['tgl_claim']); ?></td>
 	                <td align="center">
 	                	<a href="claim_edit.php?edit_id=<?php echo($row['id_claim']); ?>">
 						<i class="glyphicon glyphicon-edit"></i></a>

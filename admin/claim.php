@@ -47,6 +47,7 @@
 							        <th>Model</th>
 							        <th>Warna</th>
 							        <th>Tahun</th>
+							        <th>Tgl Claim</th>
 							        <th>Actions</th>
 							    </tr>
 						    </thead>
