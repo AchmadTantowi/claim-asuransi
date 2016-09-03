@@ -87,6 +87,7 @@ $status_pengerjaan = $_POST['status_pengerjaan'];
 	        <th>Warna</th>
 	        <th>Tahun</th>
 	        <th>Tgl Claim</th>
+	        <th>Tgl Selesai</th>
 		</tr>
 		</thead>		
 		<tbody>
@@ -112,6 +113,7 @@ $status_pengerjaan = $_POST['status_pengerjaan'];
 			<td><center><?php echo $dataku['warna_mobil'];?></center></td>
 			<td><center><?php echo $dataku['tahun_mobil'];?></center></td>
 			<td><center><?php echo tgl_indo($dataku['tgl_claim']);?></center></td>
+			<td><center><?php echo tgl_indo($dataku['tgl_selesai']);?></center></td>
 		</tr>
 		<?php } ?>
 		</tbody>

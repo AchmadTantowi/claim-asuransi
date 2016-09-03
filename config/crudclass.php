@@ -242,26 +242,50 @@ class crud
 		return $editRow;
 	}
 
-	public function update_claim($id_claim,$id_status,$tgl_selesai=null)
+	public function update_claim($id_claim,$id_status,$tgl_selesai=null,$nama_pemilik,$no_telp,$email,$merk_mobil,$warna_mobil,$tahun_mobil)
 	{
 		try
 		{
 			if($id_status == 7){
 				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status,
-																tgl_selesai=:tgl_selesai
+																tgl_selesai=:tgl_selesai,
+																nama_pemilik=:nama_pemilik,
+																no_telp=:no_telp,
+																email=:email,
+																merk_mobil=:merk_mobil,
+																warna_mobil=:warna_mobil,
+																tahun_mobil=:tahun_mobil
 														WHERE id_claim=:id_claim ");
 				$stmt->bindparam(":id_claim",$id_claim);
 				$stmt->bindparam(":id_status",$id_status);
 				$stmt->bindparam(":tgl_selesai",$tgl_selesai);
+				$stmt->bindparam(":nama_pemilik",$nama_pemilik);
+				$stmt->bindparam(":no_telp",$no_telp);
+				$stmt->bindparam(":email",$email);
+				$stmt->bindparam(":merk_mobil",$merk_mobil);
+				$stmt->bindparam(":warna_mobil",$warna_mobil);
+				$stmt->bindparam(":tahun_mobil",$tahun_mobil);
 				$stmt->execute();
 				
 				return true;
 
 			} else {
-				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status
+				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status,
+																nama_pemilik=:nama_pemilik,
+																no_telp=:no_telp,
+																email=:email,
+																merk_mobil=:merk_mobil,
+																warna_mobil=:warna_mobil,
+																tahun_mobil=:tahun_mobil
 														WHERE id_claim=:id_claim ");
 				$stmt->bindparam(":id_claim",$id_claim);
 				$stmt->bindparam(":id_status",$id_status);
+				$stmt->bindparam(":nama_pemilik",$nama_pemilik);
+				$stmt->bindparam(":no_telp",$no_telp);
+				$stmt->bindparam(":email",$email);
+				$stmt->bindparam(":merk_mobil",$merk_mobil);
+				$stmt->bindparam(":warna_mobil",$warna_mobil);
+				$stmt->bindparam(":tahun_mobil",$tahun_mobil);
 				$stmt->execute();
 				
 				return true;	
