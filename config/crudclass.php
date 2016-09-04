@@ -103,6 +103,44 @@ class crud
 		}
 	}
 
+	public function simpan_laporan_pengerjaan($no_polisi,$las_ketok,$dempul,$cat,$finishing,$poles)
+	{
+		try
+		{
+			$stmt = $this->db->prepare("INSERT INTO laporan_pengerjaan(no_polisi,las_ketok,dempul,cat,finishing,poles) VALUES(:no_polisi,:las_ketok,:dempul,:cat,:finishing,:poles)");
+			$stmt->bindparam(":no_polisi",$no_polisi);
+			$stmt->bindparam(":las_ketok",$las_ketok);
+			$stmt->bindparam(":dempul",$dempul);
+			$stmt->bindparam(":cat",$cat);
+			$stmt->bindparam(":finishing",$finishing);
+			$stmt->bindparam(":poles",$poles);
+			$stmt->execute();
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
+	public function simpan_status_mobil($asuransi,$no_polisi)
+	{
+		try
+		{
+			$stmt = $this->db->prepare("INSERT INTO status_mobil(id_asuransi,no_polisi) VALUES(:asuransi,:no_polisi)");
+			$stmt->bindparam(":asuransi",$asuransi);
+			$stmt->bindparam(":no_polisi",$no_polisi);
+			$stmt->execute();
+			return true;
+		}
+		catch(PDOException $e)
+		{
+			echo $e->getMessage();	
+			return false;
+		}
+	}
+
 	public function hapus_asuransi($id_asuransi)
 	{
 		$stmt = $this->db->prepare("DELETE FROM asuransi WHERE id_asuransi=:id_asuransi");
@@ -160,6 +198,34 @@ class crud
 		}
 	}
 
+	public function laporan_pengerjaan($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$no=1;
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+                <tr>
+	                <td><?php echo $no++; ?></td>
+	                <td><?php echo($row['no_polisi']); ?></td>
+	                <td><?php echo($row['las_ketok']); ?> Hari</td>
+	                <td><?php echo($row['dempul']); ?> Hari</td>
+	                <td><?php echo($row['cat']); ?> Hari</td>
+	                <td><?php echo($row['finishing']); ?> Hari</td>
+	                <td><?php echo($row['poles']); ?> Hari</td>
+	                <td align="center">
+	                	<a href="laporan_pengerjaan_cetak.php?id=<?php echo($row['id_laporan_pengerjaan']); ?>" target="_blank">
+						Cetak</a>
+	                </td>
+                </tr>
+                <?php
+			}
+		}
+	}
+
 	public function simpan_status_pengerjaan($nama_status)
 	{
 		try
@@ -206,12 +272,13 @@ class crud
 	// crud claim
 
 	
-	public function simpan_claim($nama,$status,$asuransi,$telp,$email,$no_pol,$merk,$model,$warna,$tahun,$tgl_claim,$jam_claim)
+	public function simpan_claim($nama,$alamat,$status,$asuransi,$telp,$email,$no_pol,$merk,$model,$warna,$tahun,$tgl_claim,$jam_claim)
 	{
 		try
 		{
-			$stmt = $this->db->prepare("INSERT INTO data_claim(nama_pemilik,id_status,asuransi,no_telp,email,no_polisi,merk_mobil,model_mobil,warna_mobil,tahun_mobil,tgl_claim,jam_claim) VALUES(:nama_pemilik,:id_status,:asuransi,:no_telp,:email,:no_polisi,:merk_mobil,:model_mobil,:warna_mobil,:tahun_mobil,:tgl_claim,:jam_claim)");
+			$stmt = $this->db->prepare("INSERT INTO data_claim(nama_pemilik,alamat,id_status,asuransi,no_telp,email,no_polisi,merk_mobil,model_mobil,warna_mobil,tahun_mobil,tgl_claim,jam_claim) VALUES(:nama_pemilik,:alamat,:id_status,:asuransi,:no_telp,:email,:no_polisi,:merk_mobil,:model_mobil,:warna_mobil,:tahun_mobil,:tgl_claim,:jam_claim)");
 			$stmt->bindparam(":nama_pemilik",$nama);
+			$stmt->bindparam(":alamat",$alamat);
 			$stmt->bindparam(":id_status",$status);
 			$stmt->bindparam(":asuransi",$asuransi);
 			$stmt->bindparam(":no_telp",$telp);
@@ -242,7 +309,7 @@ class crud
 		return $editRow;
 	}
 
-	public function update_claim($id_claim,$id_status,$tgl_selesai=null,$nama_pemilik,$no_telp,$email,$merk_mobil,$warna_mobil,$tahun_mobil)
+	public function update_claim($id_claim,$id_status,$tgl_selesai=null,$nama_pemilik,$alamat,$no_telp,$email,$merk_mobil,$warna_mobil,$tahun_mobil)
 	{
 		try
 		{
@@ -250,6 +317,7 @@ class crud
 				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status,
 																tgl_selesai=:tgl_selesai,
 																nama_pemilik=:nama_pemilik,
+																alamat=:alamat,
 																no_telp=:no_telp,
 																email=:email,
 																merk_mobil=:merk_mobil,
@@ -260,6 +328,7 @@ class crud
 				$stmt->bindparam(":id_status",$id_status);
 				$stmt->bindparam(":tgl_selesai",$tgl_selesai);
 				$stmt->bindparam(":nama_pemilik",$nama_pemilik);
+				$stmt->bindparam(":alamat",$alamat);
 				$stmt->bindparam(":no_telp",$no_telp);
 				$stmt->bindparam(":email",$email);
 				$stmt->bindparam(":merk_mobil",$merk_mobil);
@@ -272,6 +341,7 @@ class crud
 			} else {
 				$stmt=$this->db->prepare("UPDATE data_claim SET id_status=:id_status,
 																nama_pemilik=:nama_pemilik,
+																alamat=:alamat,
 																no_telp=:no_telp,
 																email=:email,
 																merk_mobil=:merk_mobil,
@@ -281,6 +351,7 @@ class crud
 				$stmt->bindparam(":id_claim",$id_claim);
 				$stmt->bindparam(":id_status",$id_status);
 				$stmt->bindparam(":nama_pemilik",$nama_pemilik);
+				$stmt->bindparam(":alamat",$alamat);
 				$stmt->bindparam(":no_telp",$no_telp);
 				$stmt->bindparam(":email",$email);
 				$stmt->bindparam(":merk_mobil",$merk_mobil);
@@ -295,6 +366,26 @@ class crud
 		{
 			echo $e->getMessage();	
 			return false;
+		}
+	}
+
+	public function data_status_mobil($query)
+	{
+		$stmt = $this->db->prepare($query);
+		$stmt->execute();
+		$no=1;
+		if($stmt->rowCount()>0)
+		{
+			while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+			{
+				?>
+                <tr>
+	                <td><?php echo $no++; ?></td>
+	                <td><?php echo($row['nama_asuransi']); ?></td>
+	                <td><?php echo($row['no_polisi']); ?></td>
+                </tr>
+                <?php
+			}
 		}
 	}
 
@@ -350,9 +441,17 @@ class crud
 		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
 		return $editRow;
 	}	
-	
-	
 
+	public function getCekMobil($idAsuransi,$noPol)
+	{
+		$stmt = $this->db->prepare("SELECT * FROM status_mobil WHERE no_polisi=:no_polisi and id_asuransi=:id_asuransi");
+		$stmt->bindparam(":no_polisi",$noPol);
+		$stmt->bindparam(":id_asuransi",$idAsuransi);
+		$stmt->execute();
+		$editRow=$stmt->fetch(PDO::FETCH_ASSOC);
+		return $editRow;
+	}	
+	
 	public function paging($query,$records_per_page)
 	{
 		$starting_position=0;

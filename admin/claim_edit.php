@@ -9,6 +9,7 @@ if(isset($_POST['btn-update']))
 {
 	$id_claim = $_GET['edit_id'];
 	$id_status = $_POST['id_status'];
+	$alamat = $_POST['alamat'];
 	$tgl_selesai = date('Y-m-d');
 	$nama_pemilik = $_POST['nama_pemilik'];
 	$no_telp = $_POST['no_telp'];
@@ -17,7 +18,7 @@ if(isset($_POST['btn-update']))
 	$warna_mobil = $_POST['warna_mobil'];
 	$tahun_mobil = $_POST['tahun_mobil'];
 	
-	if($crud->update_claim($id_claim, $id_status, $tgl_selesai,$nama_pemilik,$no_telp,$email,$merk_mobil,$warna_mobil,$tahun_mobil))
+	if($crud->update_claim($id_claim, $id_status, $tgl_selesai,$nama_pemilik,$alamat,$no_telp,$email,$merk_mobil,$warna_mobil,$tahun_mobil))
 	{
 		$msg = "<div class='alert alert-info'>
 				<strong>Selamat</strong> Record telah berhasil diubah :) <a href='claim.php'>Lihat Data Claim</a>!
@@ -67,6 +68,10 @@ if(isset($msg))
 									<div class="form-group">
 										<label>Nama Pemilik</label>
 										<input type="text" name="nama_pemilik" value="<?php echo $nama_pemilik; ?>" class="form-control">
+									</div>
+									<div class="form-group">
+										<label>Alamat</label>
+										<input type="text" name="alamat" value="<?php echo $alamat; ?>" class="form-control">
 									</div>
 									<div class="form-group">
 										<label>Telepon</label>

@@ -24,6 +24,7 @@
 if(isset($_POST['btn-save']))
 {
   $nama = $_POST['nama'];
+  $alamat = $_POST['alamat'];
   $asuransi = $_POST['asuransi'];
   $email = $_POST['email'];
   $telp = $_POST['telp'];
@@ -36,7 +37,7 @@ if(isset($_POST['btn-save']))
   $jam_claim = date('H:i:s');
   $status = 6;
   
-  if($crud->simpan_claim($nama,$status,$asuransi,$telp,$email,$no_pol,$merk,$model,$warna,$tahun,$tgl_claim,$jam_claim))
+  if($crud->simpan_claim($nama,$alamat,$status,$asuransi,$telp,$email,$no_pol,$merk,$model,$warna,$tahun,$tgl_claim,$jam_claim))
   {
     header("Location: form-claim.php?inserted");
   }
@@ -77,6 +78,9 @@ else if(isset($_GET['failure']))
 
             <label for="name_contact">Nama<span>*</span></label>
             <input name="nama" type="text" required/>
+
+            <label for="name_contact">Alamat<span>*</span></label>
+            <input name="alamat" type="text" required/>
 
             <label for="name_contact">Asuransi<span>*</span></label>
             <select class="form-control" name='asuransi' required>
